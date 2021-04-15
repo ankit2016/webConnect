@@ -1,0 +1,31 @@
+<div class="main-footer">
+    <div class="video-controls">
+        <div class="text-center">
+            <div class="button-control">
+                <div class="my-button">
+                    <i class="fa fa-microphone icon-position" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="button-control">
+                <div class="my-button color-red">
+                    <i class="fa fa-phone icon-position" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="button-control" (click)="toggleVideo.emit()">
+                <div class="my-button">
+                    <i class="fa fa-video-camera icon-position" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="share-scree" (click)="shareScreen.emit()">
+        <i class="fa fa-share-alt" aria-hidden="true"></i> &nbsp;
+        <span>Share Screen</span>
+    </div>
+    <div *ngIf="showLocalVideo && !audioOnly" class="video-container" id="video-id">
+        <span *ngIf="audioOnly" class="user-name">AK</span>
+    </div>
+    <div *ngIf="audioOnly" class="video-container">
+        <span class="user-name">AK</span>
+    </div>
+</div>

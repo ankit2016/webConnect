@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <app-header *ngIf="!showLocalVideo"></app-header>
+  <div class="main-body">
+    <div class="video-players">
+      <div class="row" *ngIf="!isSharingScreen">
+        <ng-container *ngFor="let item of totalParticipant | keyvalue">
+          <div class="col-xs-12 col-sm-3" *ngIf="item.value['videoStream']">
+            <app-video-player [data]="item.value"></app-video-player>
+          </div>
+        </ng-container>
+      </div>
+      <div class="shareScreen" *ngIf="isSharingScreen">
+        <ng-container>
+          <app-scree-share-player></app-scree-share-player>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <app-footer *ngIf="showLocalVideo" [localStream]="localStream" 
+    [showLocalVideo]="showLocalVideo" 
+    [audioOnly]="audioOnly"
+    (shareScreen)="screenShare()"
+    (toggleVideo)="replaceVideoToAudio()"
+    ></app-footer>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row">
+  <div class="col-sm-3">
+    <span class="video-heading">Me</span>
+    <span class="mice-container">
+      <i class="fa fa-microphone mice" aria-hidden="true" *ngIf="isSpeeking"></i>
+      <i class="fa fa-microphone-slash mice" aria-hidden="true" *ngIf="!isSpeeking"></i>
+    </span>
+    <div class="videoPlayer mr-4" id="local-video"></div>
+  </div>
+  <div class="col-sm-3">
+    <span class="video-heading">Remote</span>
+    <span class="mice-container">
+      <i class="fa fa-microphone mice" aria-hidden="true" *ngIf="isPeerSpeeking"></i>
+      <i class="fa fa-microphone-slash mice" aria-hidden="true" *ngIf="!isPeerSpeeking"></i>
+    </span>
+    <div class="videoPlayer" id="remote-video"></div>
+  </div>
+</div>
+
+<div style="margin-top: 20px;">
+  <input class="form-control w-25 mb-4" type="text" placeholder="Peer Id" [(ngModel)]='peerIdShare' />
+  <div class="btn-group">
+    <button class="btn btn-primary " (click)="connectWithPeer()">
+      <i class="fa fa-video-camera" aria-hidden="true"> </i>
+      Call Remote Peer
+    </button>
+    <button class="btn btn-secondary" (click)="toggleVideo()">
+      <i class="fa fa-ban" aria-hidden="true"> </i>
+      Video
+    </button>
+    <button class="btn btn-info" (click)="toggleAudio()">
+      <i class="fa fa-microphone" aria-hidden="true"> </i>
+      Audio
+    </button>
+    <button class="btn btn-warning" (click)="screenShare()">
+      <i class="fa fa-desktop" aria-hidden="true"> </i>
+      Screen share
+    </button>
+  </div>
+</div> -->
